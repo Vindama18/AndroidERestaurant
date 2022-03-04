@@ -2,5 +2,6 @@
     <string name="app_name">AndroidERestaurant</string>
     <string name="butentre">Entrées</string>
     <string name="butplat">Plats</string>
-    <string name="butdessert">désserts</string>
+    <string name="butdessert">Désserts</string>
+    <string name="butback">retour</string>
 </resources>
