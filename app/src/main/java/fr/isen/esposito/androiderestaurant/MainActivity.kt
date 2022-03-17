@@ -7,6 +7,10 @@ import android.widget.Button
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        const val CATEGORY_KEY ="cat"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,19 +24,19 @@ class MainActivity : AppCompatActivity() {
         // set on-click listener
         entre.setOnClickListener {
             startCategory(getString(R.string.butentre))
-            Toast.makeText(this , "entrées", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this , "Entrées", Toast.LENGTH_SHORT).show()
         }
 
         // set on-click listener
         plat.setOnClickListener {
             startCategory(getString(R.string.butplat))
-            Toast.makeText(this, "plats", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Plats", Toast.LENGTH_SHORT).show()
         }
 
         // set on-click listener
         dessert.setOnClickListener {
             startCategory(getString(R.string.butdessert))
-            Toast.makeText(this, "desserts", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Desserts", Toast.LENGTH_SHORT).show()
         }
 
     }

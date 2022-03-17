@@ -9,7 +9,82 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+import android.util.Log
+import android.view.View
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import fr.isen.esposito.androiderestaurant.databinding.ActivityCategoryBinding
+import org.json.JSONObject
+
 class CategoryActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityCategoryBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityCategoryBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        val title = intent.getStringExtra(MainActivity.CATEGORY_KEY) ?: ""
+        binding.textitem.text = title
+        binding.categoryListe.layoutManager = LinearLayoutManager(this)
+        binding.categoryListe.adapter = FoodAdapter(listOf(),{})
+
+        loadItemsFromServer(title)
+    }
+
+    private fun loadItemsFromServer(category : String) {
+        val url = "http://test.api.catering.bluecodegames.com/menu"
+        val obj = JSONObject()
+        obj.put("id_shop", "1")
+        val queue = Volley.newRequestQueue(this)
+
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, obj,
+            { response ->
+
+                Log.d("Response", "$response")
+                Log.d("MenuActivity", "Api call succes")
+                val menu = Gson().fromJson(response.toString(), Data::class.java)
+
+                val items = menu.data.firstOrNull{ it.name_fr == category }?.items ?: listOf() // "?."  propage le null et "?:" si c'est null, Si il n'a pas trouvé d'élement par rapport à la catégorie,il renvoie null
+                val adapter = FoodAdapter(items) {
+                    val intent = Intent(this, Details::class.java)
+
+                    intent.putExtra(DETAILS_KEY, it)
+                    startActivity(intent)
+                }
+                //binding.loaderIcon.visibility = View.GONE
+                binding.categoryListe.adapter = adapter
+
+            },
+            { error ->
+                Log.d("MenuActivity", "Api call failed")
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
+
+    companion object {
+        const val DETAILS_KEY = "details"
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/*class CategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
@@ -59,4 +134,4 @@ val texttitle = findViewById<TextView>(R.id.textitem)
 
         return food
     }
-}
+}*/
