@@ -18,12 +18,15 @@ val texttitle = findViewById<TextView>(R.id.textitem)
         texttitle.text=intent.getStringExtra("12345")
         setTitle(intent.getStringExtra("12345"))
 
-        val  food = CreerMesLigne()
+        val  food = CreerMesLigne(texttitle)
         var monRecycler: RecyclerView = findViewById(R.id.categoryListe)
         monRecycler.layoutManager = LinearLayoutManager(this)
         monRecycler.adapter = FoodAdapter(food.toTypedArray())
         {
             Toast.makeText(this, "Vous avez sélectionné ${it.nom}", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this,Details :: class.java)
+            startActivity(intent)
         }
 
         val back = findViewById<Button>(R.id.butback)
@@ -36,15 +39,23 @@ val texttitle = findViewById<TextView>(R.id.textitem)
         }
     }
 
-
-
-    fun CreerMesLigne() :ArrayList<Food> {
+    fun CreerMesLigne(textetitle:TextView) :ArrayList<Food> {
         val food = ArrayList<Food>()
-        food.add(Food(1, "Loup"))
-        food.add(Food(2, "Gorille"))
-        food.add(Food(3, "Eléphant"))
-        food.add(Food(4, "Tigre"))
-        food.add(Food(5, "Dauphin"))
+        if (textetitle.text=="Entrées") {
+            food.add(Food(1, "apéritif","7€"))
+            food.add(Food(2, "salade","5€"))
+            food.add(Food(2, "Bruschetta","7,50€"))
+        }
+        if (textetitle.text=="Plats") {
+            food.add(Food(1, "Burger maison","20€"))
+            food.add(Food(2, "Lasagne a la bolognaise","18€"))
+            food.add(Food(2, "Dorade fumée","22€"))
+        }
+        if (textetitle.text=="Désserts") {
+            food.add(Food(1, "Fondant au chocolat","3€"))
+            food.add(Food(2, "île flotante","4,50€"))
+            food.add(Food(2, "Mousse au chocolat","4€"))
+        }
 
         return food
     }

@@ -1,5 +1,6 @@
 package fr.isen.esposito.androiderestaurant
 
+import android.telecom.Call
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-data class Food(val id: Long, val nom: String)
+data class Food(val id: Long, val nom: String, val prix: String)
 
 
 class FoodAdapter(val FoodAfficher: Array<Food>, val listener: (Food) -> Unit) :
@@ -23,11 +24,14 @@ class FoodAdapter(val FoodAfficher: Array<Food>, val listener: (Food) -> Unit) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.i("XXX", "onBindViewHolder")
         holder.dishName.text = FoodAfficher[position].nom
-        holder.itemView.setOnClickListener { listener(FoodAfficher[position]) }
+        holder.prix.text=FoodAfficher[position].prix
+        holder.itemView.setOnClickListener { listener(FoodAfficher[position])
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val dishName : TextView = view.findViewById(R.id.categoryTitle)
+        val prix : TextView=view.findViewById(R.id.prix)
     }
 }
 

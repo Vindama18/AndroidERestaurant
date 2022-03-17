@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidERestaurant</string>
+    <string name="app_name">Restodroïde App</string>
     <string name="butentre">Entrées</string>
     <string name="butplat">Plats</string>
     <string name="butdessert">Désserts</string>
