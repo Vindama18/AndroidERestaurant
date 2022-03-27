@@ -31,7 +31,7 @@ class CategoryActivity : AppCompatActivity() {
         val title = intent.getStringExtra(MainActivity.CATEGORY_KEY) ?: ""
         binding.textitem.text = title
         binding.categoryListe.layoutManager = LinearLayoutManager(this)
-        binding.categoryListe.adapter = FoodAdapter(listOf(),{})
+        binding.categoryListe.adapter = FoodAdapter(arrayListOf()) {}
 
         loadItemsFromServer(title)
     }

@@ -29,6 +29,8 @@ data class Menu (
 ): Serializable
 
 data class Items (
+    @SerializedName("id")
+    val id : String,
     @SerializedName("name_fr")
     val name_fr : String,
     @SerializedName("images")
