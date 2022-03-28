@@ -1,22 +1,18 @@
 package fr.isen.esposito.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-
 import android.util.Log
-import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import fr.isen.esposito.androiderestaurant.databinding.ActivityCategoryBinding
 import org.json.JSONObject
+
 
 class CategoryActivity : AppCompatActivity() {
 
@@ -28,12 +24,14 @@ class CategoryActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val title = intent.getStringExtra(MainActivity.CATEGORY_KEY) ?: ""
+        val title = intent.getStringExtra("Category")
         binding.textitem.text = title
         binding.categoryListe.layoutManager = LinearLayoutManager(this)
         binding.categoryListe.adapter = FoodAdapter(arrayListOf()) {}
 
-        loadItemsFromServer(title)
+        if (title != null) {
+            loadItemsFromServer(title)
+        }
     }
 
     private fun loadItemsFromServer(category : String) {

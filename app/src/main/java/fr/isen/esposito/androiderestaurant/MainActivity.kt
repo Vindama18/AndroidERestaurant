@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startCategory(category : String) {
         val intent =
-            Intent(this, CategoryActivity::class.java).apply { putExtra("12345", category) }
+            Intent(this, CategoryActivity::class.java).apply { putExtra("Category", category) }
         startActivity(intent);
     }
 }

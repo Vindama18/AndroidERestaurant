@@ -21,6 +21,7 @@
 
     <TextView
         android:id="@+id/Titleplat"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="187dp"
@@ -34,12 +35,11 @@
 
     <TextView
         android:id="@+id/Platprix"
+        android:textColor="@color/black"
+        android:background="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="189dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="190dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="200dp"
         android:text="prix"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
