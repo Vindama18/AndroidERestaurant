@@ -11,7 +11,7 @@
         android:id="@+id/dishname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="60dp"
         android:text="Nom du plat"
         android:textColor="@color/text"
@@ -21,10 +21,10 @@
 
     <TextView
         android:id="@+id/dishdescription"
-        android:layout_width="331dp"
-        android:layout_height="211dp"
+        android:layout_width="324dp"
+        android:layout_height="39dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
         android:text="blabla"
         android:textColor="@color/text"
@@ -48,7 +48,7 @@
         android:id="@+id/imageView2"
         android:layout_width="260dp"
         android:layout_height="184dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dishname"
@@ -64,42 +64,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="400dp"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="600dp">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="20dp">
+
         <Button
             android:id="@+id/btnMinus"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:text="-"
-            android:textSize="22sp"
-            android:textColor="#ffffff"
             android:layout_alignParentBottom="true"
             android:layout_margin="20dp"
-            />
+            android:text="-"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
         <TextView
+            android:id="@+id/quantityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="22sp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:id="@+id/quantityText"
-            android:textColor="@color/white">
+            android:layout_marginRight="20dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="22sp">
 
         </TextView>
+
         <Button
             android:id="@+id/btnUp"
             android:layout_width="120dp"
             android:layout_height="60dp"
 
-            android:text="+"
-            android:textSize="22sp"
-            android:textColor="#ffffff"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:layout_margin="20dp"
-            />
+            android:text="+"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
